@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const authRoutes = require('./routes/auth');
 const drawingRoutes = require('./routes/drawing');
 const path = require('path');
+require('dotenv').config()
 
 const app = express();
 app.use(express.json());
@@ -10,10 +11,10 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    'mongodb+srv://jatin:jatin@cluster0.xzbmn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log('Connected to MongoDB Atlas'))
   .catch((err) => console.log(err))
 

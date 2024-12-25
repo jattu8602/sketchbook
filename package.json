@@ -1,21 +1,27 @@
 {
   "name": "prashant-mini-project",
   "version": "1.0.0",
-  "main": "server.js",
+  "description": "NotesHub - A Web Based Note Sharing Platform",
+  "main": "backend/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run start-backend",
+    "start-backend": "nodemon backend/server.js",
+    "start-frontend": "npm run build-frontend && serve -s frontend",
+    "build-frontend": "cd frontend && npm install && npm run build",
+    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install"
   },
   "keywords": [],
-  "author": "",
+  "author": "Prashant",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.2",
     "nodemon": "^3.1.9",
-    "socketio": "^1.0.0"
+    "socketio": "^1.0.0",
+    "serve": "^14.2.0"
   }
 }
