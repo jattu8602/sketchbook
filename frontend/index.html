@@ -173,6 +173,49 @@ if (user) {
 }
 
 </script>
+
+<script>
+  // Function to check if the user is logged in
+  function isLoggedIn() {
+    const user = localStorage.getItem('user');
+    return !!user; // Return true if user exists, false otherwise
+  }
+
+  // Event listeners for tool buttons
+  document.querySelector('.videoCallIcon').addEventListener('click', () => {
+    if (isLoggedIn()) {
+      // Logged-in user: Make the video call feature work
+      document.getElementById('videoContainer').style.display = 'block';
+    } else {
+      // Non-logged-in user: Redirect to login page
+      alert('You must be logged in to use this feature.');
+      window.location.href = 'login.html';
+    }
+  });
+
+  document.querySelector('.screenShareIcon').addEventListener('click', () => {
+    if (isLoggedIn()) {
+      // Logged-in user: Enable screen sharing
+      alert('Screen sharing feature is coming soon!');
+    } else {
+      // Non-logged-in user: Redirect to login page
+      alert('You must be logged in to use this feature.');
+      window.location.href = 'login.html';
+    }
+  });
+
+  document.querySelector('.radioIcon').addEventListener('click', () => {
+    if (isLoggedIn()) {
+      // Logged-in user: Enable radio functionality
+      document.getElementById('radioBox').style.display = 'block';
+    } else {
+      // Non-logged-in user: Redirect to login page
+      alert('You must be logged in to use this feature.');
+      window.location.href = 'login.html';
+    }
+  });
+</script>
+
   <script src="app.js"></script>
 </body>
 </html>
