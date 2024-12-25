@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Drawing App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Drawing and Video Collaboration App</h1>
+  <div id="authContainer">
+    <!-- This will be dynamically updated -->
+  </div>
+</header>
+
+
+<form id="signupForm" style="display: none;">
+  <input type="text" id="signupUsername" placeholder="Username" required />
+  <input type="email" id="signupEmail" placeholder="Email" required />
+  <input type="password" id="signupPassword" placeholder="Password" required />
+  <button type="submit">Sign Up</button>
+</form>
+
+<form id="loginForm" style="display: none;">
+  <input type="email" id="loginEmail" placeholder="Email" required />
+  <input type="password" id="loginPassword" placeholder="Password" required />
+  <button type="submit">Login</button>
+</form>
+
+<script>
+  // Toggle visibility between login and signup forms
+  document.getElementById('loginBtn').addEventListener('click', () => {
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('signupForm').style.display = 'none';
+  });
+
+  document.getElementById('signupBtn').addEventListener('click', () => {
+    document.getElementById('signupForm').style.display = 'block';
+    document.getElementById('loginForm').style.display = 'none';
+  });
+</script>
+
+
+
+
+  <div id="toolbar">
+    <select id="tool">
+      <option value="brush">Brush</option>
+      <option value="line">Line</option>
+      <option value="rectangle">Rectangle</option>
+      <option value="circle">Circle</option>
+      <option value="ai">AI Shape Recognizer</option>
+  </select>
+    <label for="brushColor">Color:</label>
+    <input type="color" id="brushColor" value="#000000">
+
+    <input type="number" id="brushSize" value="5" min="1" max="50">
+
+
+    <button id="clearCanvas">Clear Canvas</button>
+    <input type="file" id="uploadImage" accept="image/*">
+    <button id="exportCanvas">Export</button>
+  </div>
+
+
+
+
+  <div id="videoContainer"  style="display: none;">
+    <div class="videoCall">
+      <video id="localVideo" autoplay muted></video>
+
+    </div>
+    <div class="videoButtons">
+      <div class="callButtons">
+        <button id="startCall">Start Call</button>
+        <button id="endCall">End Call</button>
+      </div>
+      <button id="toAddiTools">Tools</button>
+    </div>
+  </div>
+    <!-- screenshare -->
+    <div id="radioContainer"  style="display: none;">
+      <div class="videoCall">
+        <video id="localVideo" autoplay muted></video>
+
+      </div>
+      <div class="videoButtons">
+        <div class="callButtons">
+          <button id="startCall">Start Call</button>
+          <button id="endCall">End Call</button>
+        </div>
+        <button id="shareScreen">Tools</button>
+      </div>
+
+
+  </div>
+  <!-- radio -->
+  <div class="radioBox" id="radioBox" style="display: none;">
+    <div class="radioAnimation">
+      <!-- Neon-style animation -->
+      <div class="neon-animation"></div>
+    </div>
+    <label for="languageSelect">Select Language:</label>
+    <select id="languageSelect">
+      <option value="international" selected>International</option>
+      <option value="english">English</option>
+      <option value="hindi">Hindi</option>
+      <option value="spanish">Spanish</option>
+    </select>
+    <div id="channelList">
+      <!-- Channels will be dynamically added here -->
+    </div>
+    <audio id="radioPlayer" controls autoplay></audio>
+  </div>
+
+
+
+
+  <div class="additionToolBox">
+    <div class="addiTools videoCallIcon ">
+      <img src="./assets/videocall.png" alt="">
+      <div class="iconName"></div>
+    </div>
+    <div class="addiTools screenShareIcon">
+      <img src="./assets/screenshare.png" alt="">
+      <div class="iconName"></div>
+    </div>
+    <div class="addiTools radioIcon">
+      <img src="./assets/radio.png" alt="">
+      <div class="iconName"></div>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="container">
+  <div class="spaceCover"></div>
+  <canvas id="drawingCanvas"></canvas>
+</div>
+
+
+
+
+
+
+<script>
+  // Check if the user is logged in
+const authContainer = document.getElementById('authContainer');
+const user = JSON.parse(localStorage.getItem('user')); // Get user details from localStorage
+
+if (user) {
+  // Display username and email
+  authContainer.innerHTML = `
+    <p>Welcome, ${user.username} (${user.email})</p>
+    <button id="logoutBtn">Logout</button>
+  `;
+  document.getElementById('logoutBtn').addEventListener('click', () => {
+    localStorage.removeItem('token'); // Remove token
+    localStorage.removeItem('user'); // Remove user details
+    window.location.reload(); // Reload the page
+  });
+} else {
+  // Display Login and Sign-Up buttons
+  authContainer.innerHTML = `
+    <button onclick="window.location.href='login.html'">Login</button>
+    <button onclick="window.location.href='signup.html'">Sign Up</button>
+  `;
+}
+
+</script>
+  <script src="app.js"></script>
+</body>
+</html>
