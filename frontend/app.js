@@ -7,6 +7,10 @@ canvas.width = 800
 canvas.height = 600
 
 let isDrawing = false
+
+
+
+
 let currentColor = document.getElementById('brushColor').value
 let currentBrushSize = document.getElementById('brushSize').value
 
