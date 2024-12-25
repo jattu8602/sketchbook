@@ -11,7 +11,11 @@ let currentColor = document.getElementById('brushColor').value
 let currentBrushSize = document.getElementById('brushSize').value
 
 // Image manipulation variables
-let img = null // Store the image object
+let img = null
+
+
+
+// Store the image object
 let imgX = 100 // Initial X position of the image
 let imgY = 100
 // Initial Y position of the image
