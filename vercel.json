@@ -10,14 +10,10 @@
     {
       "src": "/api/(.*)",
       "dest": "backend/server.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "backend/server.js"
     }
   ],
   "env": {
-    "MONGO_URI": "your-mongodb-connection-string",
-    "JWT_SECRET": "your-jwt-secret"
+    "MONGO_URI": "mongodb+srv://jatin:jatin@cluster0.xzbmn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "JWT_SECRET": "prashant"
   }
 }
