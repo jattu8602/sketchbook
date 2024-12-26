@@ -1,11 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "backend/server.js",
-      "use": "@vercel/node"
-    }
-  ],
   "routes": [
     {
       "src": "/api/(.*)",
@@ -14,6 +8,6 @@
   ],
   "env": {
     "MONGO_URI": "mongodb+srv://jatin:jatin@cluster0.xzbmn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-    "JWT_SECRET": "prashant"
+    "JWT_SECRET": "your-jwt-secret"
   }
 }
