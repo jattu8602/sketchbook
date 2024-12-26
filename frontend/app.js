@@ -19,6 +19,15 @@ let img = null
 
 
 
+
+
+
+
+
+
+
+
+
 // Store the image object
 let imgX = 100 // Initial X position of the image
 let imgY = 100
